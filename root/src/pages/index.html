@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+        <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="../js/main.js"></script>
+        <title>To do List</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <!-- CABEÇALHO -->
+        <header class="bg-black">
+            <h1 class="h1 text-center text-white fw-semibold py-2">
+                Lista de Afazeres
+            </h1>
+        </header>
+
+        <!-- CONTEÚDO -->
+        <main class="d-flex flex-column flex-grow-1">
+            <!-- LISTA DE AFAZERES -->
+            <div class="container py-2 my-3">
+                <!-- CABEÇALHO -->
+                <div class="d-flex justify-content-between bg-dark px-4 text-white text-center fs-2 fw-semibold rounded-top-4">
+                    <!-- TÍTULO -->
+                    <h1 class="fs-2 fw-semibold my-2">
+                        Lista de Afazeres
+                    </h1>
+
+                    <!-- BOTÕES -->
+                    <div class="d-flex align-items-center gap-3">
+                        <button class="btn btn-outline-light bi bi-plus-circle" data-bs-toggle="modal" data-bs-target="#modalRegister"> Nova Tarefa</button>
+                        <button class="btn btn-outline-info bi bi-arrow-clockwise" id="reload"> Atualizar</button>
+                    </div>
+                </div>
+
+                <!-- AFAZERES -->
+                <div id="taskList" class="text-center border rounded-bottom-4">
+                    <!-- TASKS AQUI -->
+                </div>
+            </div>
+        </main>
+
+        <!-- RODAPÉ -->
+        <footer class="d-flex justify-content-center bg-black text-white ">
+            <div class="d-flex flex-row flex-wrap">
+                <!--CRÉDITOS-->
+                <div class="d-flex flex-column mx-5 p-2">
+                    <h1 class="fs-5 fw-bold">
+                        Jogo Desenvolvido por:
+                    </h1>
+                    <ul class="m-0 list-unstyled">
+                        <li>Paulo Sócrates de Souza Pinheiro</li>
+                    </ul>
+                </div>
+
+                <!--CONTATO-->
+                <div class="d-flex flex-column mx-5 p-2">
+                    <!-- TÍTULO -->
+                    <h1 class="fs-5 fw-bold">
+                        Informações de Contato:
+                    </h1>
+                    <!-- INFORMAÇÕES -->
+                    <ul class="m-0 list-unstyled">
+                        <!-- EMAIL -->
+                        <li>
+                            <span class="fw-bold">E-mail: </span>
+                            <span class="link-primary">paulosocratesdesouza@gmail.com</span>
+                        </li>
+                        <!-- TELEFONE -->
+                        <li>
+                            <span class="fw-bold">Tel: </span>
+                            <span class="link-primary">(68) 98124-0703</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MODAL DE CADASTRO DE NOVAS TAREFAS -->
+        <div class="modal fade" id="modalRegister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalRegisterLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h1 class="modal-title fs-5" id="modalRegisterLabel">Cadastrar Nova Tarefa</h1>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="mb-3">
+                                <label for="in-title" class="form-label">Título</label>
+                                <input type="email" class="form-control" id="in-title" placeholder="Sua tarefa aqui">
+                            </div>
+                            <div class="mb-3">
+                                <label for="in-description" class="form-label">Descrição</label>
+                                <textarea class="form-control" id="in-description" rows="3" placeholder="(Opcional)"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer bg-dark text-white">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" id="newTask">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+        <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>
