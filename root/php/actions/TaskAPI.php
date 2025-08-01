@@ -55,6 +55,7 @@
             echo $sxe->asXML();
             http_response_code(200);
             break;
+
         case "POST":
             // Verificando os parâmetros do corpo da requisição
             if (
@@ -65,15 +66,17 @@
                 die();
             }
 
-            // Extraindo dados do $_POST
+            // Extraindo dados da super global $_POST
             $task->title =  $_POST['title'];
             $task->description = $_POST['description'];
 
-            // Executando registro
+            // Registrando
             $task->register();
+            http_response_code(201);
             break;
+
         case "PUT":
-            // Extraindo dados do corpo da requisição e pondo em um array
+            // Extraindo dados do corpo da requisição e os pondo em um array
             parse_str(file_get_contents("php://input"), $put_vars);
 
             // Verificando os parâmetros do corpo da requisição
@@ -99,10 +102,11 @@
                 die();
             }
 
-            // Executando registro
+            // Atualizando
             $task->update();
             http_response_code(202);
             break;
+
         case "DELETE":
             // Extraindo dados do corpo da requisição e pondo em um array
             parse_str(file_get_contents("php://input"), $delete_vars);
@@ -122,8 +126,11 @@
             // Verificando se o registro foi apagado
             if($task->find() == null) {
                 http_response_code(204);
+            } else {
+                http_response_code(500);
             }
             break;
+
         default:
             http_response_code(405);
             die();

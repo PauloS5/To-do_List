@@ -12,6 +12,7 @@
         {
             self::$conn = $dbh;
             self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             TaskGateway::setConnection(self::$conn);
         }
 
@@ -38,7 +39,6 @@
             if(isset($gw->read($this->id)[0])) {
                 return $gw->read($this->id)[0];
             }
-
             return null;
         }
         public function register()

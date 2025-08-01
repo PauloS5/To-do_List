@@ -9,7 +9,6 @@ class TaskGateway
     public static function setConnection(PDO $dbh)
     {
         self::$dbh = $dbh;
-        self::$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     // Métodos para manipulação do banco de dados
@@ -60,15 +59,9 @@ class TaskGateway
 
         // Passagem de parâmetros
         $sth->bindParam(':id', $id, PDO::PARAM_INT);
-        if (isset($title)) {
-            $sth->bindParam(':title', $title, PDO::PARAM_STR);
-        }
-        if (isset($description)) {
-            $sth->bindParam(':description', $description, PDO::PARAM_STR);
-        }
-        if (isset($status)) {
-            $sth->bindParam(':status', $status, PDO::PARAM_STR);
-        }
+        $sth->bindParam(':title', $title, PDO::PARAM_STR);
+        $sth->bindParam(':description', $description, PDO::PARAM_STR);
+        $sth->bindParam(':status', $status, PDO::PARAM_STR);
 
         // Execução da consulta
         $sth->execute();
@@ -86,9 +79,13 @@ class TaskGateway
     }
     public static function getLastId()
     {
-        // Consulta
+        // Declarando a consulta
         $dbh = self::$dbh->query("SELECT id FROM tbTasks ORDER BY id DESC LIMIT 1");
+
+        // Resultado
         $result = $dbh->fetch(PDO::FETCH_NUM);
+
+        // Caso não haja nenhum id no banco, será retornado 0
         return $result ? $result[0] : 0;
     }
 }
